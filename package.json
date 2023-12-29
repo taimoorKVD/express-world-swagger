@@ -1,0 +1,21 @@
+{
+  "name": "express-world",
+  "version": "1.0.0",
+  "description": "Say hello to express the world",
+  "main": "app.js",
+  "scripts": {
+    "start:dev": "nodemon app.js",
+    "start:prod": "node app.js"
+  },
+  "keywords": [
+    "express-the-world"
+  ],
+  "author": "Mohammad Taimoor Hussain",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^3.0.2",
+    "swagger-ui-express": "^5.0.0",
+    "yaml": "^2.3.4"
+  }
+}

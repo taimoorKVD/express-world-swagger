@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: Express World
+  description: Express the world using Node JS | Mohammad Taimoor Hussain
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+    description: testing route
+  - url: http://localhost:3000/staging
+    description: staging route
+
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /hey:
+    get:
+      summary: return a string value
+      responses:
+        "200": # status code
+          description: return a string value
+
+  /send:
+    get:
+      summary: returns as object
+      responses:
+        "200":
+          description: returns an object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: Mohammad Taimoor Hussain
+                  age:
+                    format: int64
+                    example: 19
+                  mobile:
+                    type: string
+
+  /json:
+    get:
+      summary: returns as object
+      responses:
+        "200":
+          description: returns an object
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Mohammad Taimoor Hussain
+                age:
+                  format: int64
+                  example: 19
+                mobile:
+                  type: string
+
+  /params/stack/{stack}/version/{version}:
+    get:
+      summary: returns params
+      parameters:
+        - name: stack
+          default: node-js
+          in: path
+          schema:
+            type: string
+        - name: version
+          default: 3.0.0
+          in: path
+          schema:
+            type: string
+      responses:
+        "200":
+          description: returns params
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                params:
+                  type: string
+
+  /query-string:
+    get:
+      summary: returns params
+      parameters:
+        - in: query
+          name: stack
+          default: node-js
+          schema:
+            type: string
+            enum: [laravel, node-js, php, javascript, ajax, jquery]
+            required: true
+        - in: query
+          name: version
+          default: 3.0.0
+          schema:
+            type: string
+            enum: [ 5.6, 3.0.0, 7.2, 6, 5, 6 ]
+            required: true
+      responses:
+        "200":
+          description: returns params
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                params:
+                  type: string
